@@ -33,11 +33,11 @@ safe_decode() {
 
 while getopts 'hed' opt
 do
-    [ $opt = e ] && break
-    [ $opt = d ] && safe_decode && exit
+    [ "$opt" = e ] && break
+    [ "$opt" = d ] && safe_decode && exit
 
     echo >&2 "Usage: $(basename "$0") [-h] [-ed]"
-    [ $opt = h ] && echo >&2 "
+    [ "$opt" = h ] && echo >&2 "
 URL-safe base64 encoding as described in RFC 4648.
 
 Options:
