@@ -11,7 +11,7 @@ usage() {
 }
 
 exec_recipe() {
-    recipe=$(find "$RECIPES_DIR" -name "$1" | head -n 1)
+    recipe=$(find "$RECIPES_DIR" -name "$1" -not -name '.*' | head -n 1)
 
     [ -z "$recipe" ] && {
         log "Error: recipe not found: $1"
@@ -25,7 +25,7 @@ exec_recipe() {
 }
 
 list_recipes() {
-    find "$RECIPES_DIR" -type f -exec basename {} \;
+    find "$RECIPES_DIR" -type f -not -name '.*' -exec basename {} \;
 }
 
 
