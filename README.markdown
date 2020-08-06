@@ -45,6 +45,22 @@ is taken as a recipe.
 This script lets you maintain a set of workflows, common invocations
 and maintenance scripts outside `PATH`.
 
+------------------------------------------------------------------------
+
+    buffer [-h] [--] command [<argument> ...]
+
+Runs a command but retains its output until it succeeds. If the command
+fails, discards the output.
+
+Envisioned use:
+
+    buffer scrypt dec ciphertext > plaintext
+    buffer nc -l 1234 > received.txt
+
+Note that the redirections pertain to `buffer`; so the output of
+`scrypt` (respectively, `nc`) is written to `plaintext` (`received.txt`)
+only if `scrypt` (`nc`) suceeds, and otherwise discarded.
+
 Installation
 ------------
 
