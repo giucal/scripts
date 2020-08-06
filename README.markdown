@@ -1,7 +1,7 @@
 Scripts
 =======
 
-Scripts I needed more than one time on different machines.
+Scripts I needed more than once on different machines.
 Hopefully portable.
 
 Overview
@@ -43,7 +43,7 @@ recipes directory which is executable and doesn't start with a dot
 is taken as a recipe.
 
 This script lets you maintain a set of workflows, common invocations
-and maintenance scripts outside 'PATH'.
+and maintenance scripts outside `PATH`.
 
 Installation
 ------------
@@ -55,6 +55,6 @@ To install all of them:
     % make install                        # to ~/.local/bin
     % PREFIX=${YOUR_PREFIX} make install  # to ${YOUR_PREFIX}
 
-To install some of them, DIY:
+To install some of them:
 
     % install ${SCRIPT_NAME}.sh ${YOUR_PREFIX}/${SCRIPT_NAME}
