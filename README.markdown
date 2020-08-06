@@ -59,7 +59,7 @@ Envisioned use:
 
 Note that the redirections pertain to `buffer`; so the output of
 `scrypt` (respectively, `nc`) is written to `plaintext` (`received.txt`)
-only if `scrypt` (`nc`) suceeds, and otherwise discarded.
+only if `scrypt` (`nc`) succeeds, and otherwise discarded.
 
 Installation
 ------------
