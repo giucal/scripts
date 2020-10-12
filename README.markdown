@@ -61,6 +61,8 @@ Note that the redirections pertain to `buffer`; so the output of
 `scrypt` (respectively, `nc`) is written to `plaintext` (`received.txt`)
 only if `scrypt` (`nc`) succeeds, and otherwise discarded.
 
+------------------------------------------------------------------------
+
     password-prompt
 
 Asks for a password. It prompts on `/dev/tty`, reads the password from stdin,
@@ -70,6 +72,22 @@ Example:
 
     # In a script, read a password from the terminal.
     password=$(password-prompt < /dev/tty)
+
+------------------------------------------------------------------------
+
+    random-password
+
+Generates an ASCII random password. It takes the following options
+in any combination:
+
+  | Flag | The password _may_ include |
+  | ---- | -------------------------- |
+  | `-d` | decimal digits (0-9)       |
+  | `-u` | upper-case letters (A-Z)   |
+  | `-l` | lower-case letters (a-z)   |
+  | `-p` | ASCII punctuation          |
+
+If none is given, `random-password` assumes `-dulp`.
 
 Installation
 ------------
