@@ -8,7 +8,7 @@ usage() {
 Options:
     -0  Terminate the password with a null character.
     -c  Check password. (Ask twice.)
-    -P <prompt>
+    -m <message>
         Prompt message. Default is 'Password: '."
     exit 2
 }
@@ -17,10 +17,10 @@ message='Password: '
 null_terminated=
 check=
 
-while getopts "hc0i:P:p:" opt; do
+while getopts "hc0m:" opt; do
     case $opt in
         (c) check=t             ;;
-        (P) message=$OPTARG     ;;
+        (m) message=$OPTARG     ;;
         (0) null_terminated=t   ;;
         (h) usage -h            ;;
         (*) usage               ;;
