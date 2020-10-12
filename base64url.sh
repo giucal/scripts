@@ -2,26 +2,26 @@
 
 # base64url -- URL-safe base64 encoding
 
-# To run a command quietly:
-q() {
-    "$@"
-} >/dev/null
-
-# Find a suitable base64 command.
-if q command -v base64
-then
-    # On Linux and macOS, pick 'base64'. They're two different
-    # commands, but both support the '--decode' flag.
-    ENCODER=base64
-    DECODER='base64 --decode'
-elif q command -v b64encode
-then
-    # On BSDs pick 'b64{encode,decode}'.
-    ENCODER=b64encode
-    DECODER=b64decode
-else
-    exit 127
-fi
+# Pick the right encoder and decoder.
+case $(uname) in
+    (Darwin|Linux)
+        # On both Linux and macOS, 'base64' supports the '--decode' flag.
+        ENCODER='base64'
+        DECODER='base64 --decode'
+        ;;
+    (FreeBSD)
+        ENCODER='base64 -e'
+        DECODER='base64 -d'
+        ;;
+    (NetBSD)
+        ENCODER='base64'
+        DECODER='base64 -d'
+        ;;
+    (*)
+        echo >&2 "Unsupported/unknown system"
+        exit 1
+        ;;
+esac
 
 safe_encode() {
     $ENCODER | tr '/+' '_-' | tr -d '\n'
