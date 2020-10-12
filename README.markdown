@@ -61,6 +61,16 @@ Note that the redirections pertain to `buffer`; so the output of
 `scrypt` (respectively, `nc`) is written to `plaintext` (`received.txt`)
 only if `scrypt` (`nc`) succeeds, and otherwise discarded.
 
+    password-prompt
+
+Asks for a password. It prompts on `/dev/tty`, reads the password from stdin,
+and writes it back to stdout.
+
+Example:
+
+    # In a script, read a password from the terminal.
+    password=$(password-prompt < /dev/tty)
+
 Installation
 ------------
 
