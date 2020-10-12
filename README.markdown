@@ -18,15 +18,20 @@ The simplest solution I could come up with is combining `od` and `tr`:
 
 ------------------------------------------------------------------------
 
-    base64url [-h] [-ed]
+    base64-to-base64url [-h]
+    base64url-to-base64 [-h]
 
-URL-safe base64 encoder/decoder. Supports wrapped base64 input,
-but always produces a single base64 line.
+Filters to convert between base64 and URL-safe base64.
 
-URL-safe base64 is gratis if you have a base64 encoder.
-The problem is that POSIX doesn't specify a base64 input converter.
-This scripts selects one of the installed base64 commands and applies
-the mapping:
+`base64-to-base64url` reads (optionally wrapped) base64 from stdin and writes
+URL-safe base64 to stdout. Vice versa, `base64url-to-base64` reads URL-safe
+base64 from stdin and writes (unwrapped) base64 to stdout.
+
+POSIX doesn't specify a base64 input converter; so you need to
+combine these filters with the appropriate command for your system.
+
+The implementation is unoriginal. Indeed, URL-safe base64 is gratis
+if you have a base64 encoder: just apply the following transformation:
 
   | base64 | URL-safe base64 |
   |--------|-----------------|
