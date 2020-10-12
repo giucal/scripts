@@ -18,7 +18,7 @@ The simplest solution I could come up with is combining `od` and `tr`:
 
 ------------------------------------------------------------------------
 
-    base64-url [-h] [-ed]
+    base64url [-h] [-ed]
 
 URL-safe base64 encoder/decoder. Supports wrapped base64 input,
 but always produces a single base64 line.

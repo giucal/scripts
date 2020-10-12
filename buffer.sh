@@ -25,6 +25,6 @@ exec 4<"$buffer" # Read descriptor.
 unlink "$buffer"
 
 # Execute the given command and redirect its output to $buffer.
-# If the command fails, discard the output; it it succeeds, copy
+# If the command fails, discard the output; if it succeeds, copy
 # the output to stdout.
 "$@" >&3 && cat <&4
