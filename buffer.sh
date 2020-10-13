@@ -2,17 +2,10 @@
 
 # buffer -- retains the output of a command until it completes successfully
 
-usage() {
-    echo "Usage: $(basename "$0") [-h] [--] command [argument ...]"
+getopts 'h' _ && {
+    echo >&2 "Usage: $(basename "$0") [-h] [--] <command> [<argument> ...]"
     exit 2
 }
-
-while getopts 'h' opt; do
-    case $opt in
-    h) usage ;;
-    *) usage >&2 ;;
-    esac
-done
 
 [ "$1" = '--' ] && shift
 

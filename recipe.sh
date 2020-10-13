@@ -7,7 +7,8 @@ log() {
 }
 
 usage() {
-    log "Usage: recipe [-h] <recipe> [<argument> ...]"
+    log "Usage: $(basename "$0") [-h] [--] <recipe> [<argument> ...]"
+    exit 2
 }
 
 exec_recipe() {
@@ -38,7 +39,7 @@ list_recipes() {
     exit 1
 }
 
-getopts h _ && usage && exit 2
+getopts h _ && usage
 [ "$1" = -- ] && shift
 
 [ $# = 0 ] && list_recipes && exit

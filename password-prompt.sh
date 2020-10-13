@@ -3,7 +3,7 @@
 # This script prompts for a password using built-in shell capabilities.
 
 usage() {
-    echo >&2 "password-prompt: [-h] [-0c] [-p <prompt>]"
+    echo >&2 "Usage: $(basename "$0") [-h] [-0c] [-p <prompt>]"
     [ "$1" = '-h' ] && echo >&2 "
 Options:
     -0  Terminate the password with a null character.

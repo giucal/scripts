@@ -7,7 +7,7 @@ encode() {
 }
 
 usage() {
-    echo >&2 "Usage: $(basename "$0") [-h] [--] [<string>]"
+    echo >&2 "Usage: $(basename "$0") [-h] [--] {<string> | 0<}"
     exit 2
 }
 

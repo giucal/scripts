@@ -3,16 +3,13 @@
 # Simple but portable password-generation script.
 
 usage() {
-    echo >&2 "Usage: $0 [-h] [-dulp] <length>"
+    echo >&2 "Usage: $(basename "$0") [-h] [-dulp] <length>"
     [ "$1" = '-h' ] && echo >&2 "
 Options:
-
-  -d|u|l|p
-      Allow decimal digits (d), upper-case (u) and lower-case (l) letters,
-      punctuation characters (p), or a combination thereof to appear in
-      the generated password.
-
-  -h  Show this message."
+    -d | -u | -l | -p
+        Allow decimal digits (d), upper-case (u) and lower-case (l) letters,
+        punctuation characters (p), or a combination thereof to appear in
+        the generated password."
     exit 2
 }
 
