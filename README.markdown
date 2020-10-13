@@ -7,7 +7,9 @@ Hopefully portable.
 Overview
 --------
 
-    to-hex [-h] [--] [<string>]
+    to-hex [-h] [--] {<string> | 0<}
+
+Converts either stdin or, if given, `<string>` to haxadecimal.
 
 As far as I can tell, none of the POSIX commands can turn a stream of
 bytes into an hexadecimal string without intermixed spaces, counters
@@ -18,14 +20,16 @@ The simplest solution I could come up with is combining `od` and `tr`:
 
 ------------------------------------------------------------------------
 
-    base64-to-base64url [-h]
-    base64url-to-base64 [-h]
+    base64-to-base64url [-h] [--] {<string> | 0<}
+    base64url-to-base64 [-h] [--] {<string> | 0<}
 
 Filters to convert between base64 and URL-safe base64.
 
-`base64-to-base64url` reads (optionally wrapped) base64 from stdin and writes
-URL-safe base64 to stdout. Vice versa, `base64url-to-base64` reads URL-safe
-base64 from stdin and writes (unwrapped) base64 to stdout.
+`base64-to-base64url` takes (optionally wrapped) base64 as input and writes
+URL-safe base64 to stdout. Vice versa, `base64url-to-base64` takes URL-safe
+base64 as input and writes (unwrapped) base64 to stdout.
+
+The input is either stdin or, if given, `<string>`.
 
 POSIX doesn't specify a base64 input converter; so you need to
 combine these filters with the appropriate command for your system.
