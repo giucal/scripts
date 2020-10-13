@@ -46,7 +46,7 @@ charset() {
 
 # Parse options.
 cs=0  # charset
-while getopts 'dulp' opt; do
+while getopts 'hdulp' opt; do
     [ "$opt" = 'h' ] && usage -h
     [ "$opt" = '?' ] && usage
     cs=$(( cs | opt ))
