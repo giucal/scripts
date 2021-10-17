@@ -98,6 +98,12 @@ in any combination:
 
 If none is given, `random-password` assumes `-dulp`.
 
+------------------------------------------------------------------------
+
+    do-within [-h] [--] <timeout> <command> [<argument> ...]
+
+Runs a command with a given timeout. Exits with the status code of `<command>`.
+
 Installation
 ------------
 
