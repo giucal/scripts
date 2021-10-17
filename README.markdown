@@ -72,7 +72,7 @@ only if `scrypt` (`nc`) succeeds, and otherwise discarded.
 
 ------------------------------------------------------------------------
 
-    password-prompt
+    password-prompt.sh [-h] [-0c] [-p <prompt>]
 
 Asks for a password. It prompts on `/dev/tty`, reads the password from stdin,
 and writes it back to stdout.
@@ -84,7 +84,7 @@ Example:
 
 ------------------------------------------------------------------------
 
-    random-password
+    random-password [-h] [-dulp] <length>
 
 Generates an ASCII random password. It takes the following options
 in any combination:
