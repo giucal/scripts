@@ -104,6 +104,14 @@ If none is given, `random-password` assumes `-dulp`.
 
 Runs a command with a given timeout. Exits with the status code of `<command>`.
 
+------------------------------------------------------------------------
+
+    by-size [-h] [--] [<file> ...]
+
+`du|sort`s the given files and directories (up to the first level)
+from the biggest to the smallest. If no argument is given, runs on the
+current directory.
+
 Installation
 ------------
 
