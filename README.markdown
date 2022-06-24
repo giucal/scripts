@@ -44,18 +44,6 @@ if you have a base64 encoder: just apply the following transformation:
 
 ------------------------------------------------------------------------
 
-    recipe [-h] <recipe> [<argument> ...]
-
-Finds and executes 'recipes' from a certain directory. The directory
-is set with the `RECIPES_DIR` environment variable. Anything in the
-recipes directory which is executable and doesn't start with a dot
-is taken as a recipe.
-
-This script lets you maintain a set of workflows, common invocations
-and maintenance scripts outside `PATH`.
-
-------------------------------------------------------------------------
-
     buffer [-h] [--] command [<argument> ...]
 
 Runs a command but retains its output until it succeeds. If the command
