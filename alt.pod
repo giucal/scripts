@@ -1,0 +1,66 @@
+=head1 SYNOPSIS
+
+B<alt> [B<-h>] [B<-->] I<command> [I<argument> ...]
+
+=head1 DESCRIPTION
+
+B<alt> looks up I<command> on the alternative search path B<ALT_PATH> and runs
+it with the provided I<argument>s.
+
+=head2 LOOKUP
+
+The command-search algorithm used by B<alt> is the same as that of the running
+shell (see L<command(1)/"-v">). Thus, I<command> can be a regular command,
+built-in, special built-in, a function (for those shells that support exported
+functions), etc.
+
+=head2 EXECUTION
+
+I<command> is run in the current environment. In particular, the value (or
+unset status) of B<PATH> seen by I<command> is that inherited by the
+I<current> environment, I<not> C<$ALT_PATH>.
+
+=head1 OPTIONS
+
+=over
+
+=item B<-h>
+
+Print the help message.
+
+=back
+
+=head1 EXAMPLES
+
+To keep some script outside C<PATH> yet easily reachable, define a custom
+C<ALT_PATH>, e.g. through a function in I<.profile>:
+
+    # My scripts.
+    my() {
+        ALT_PATH=path/to/scripts alt "$@"
+    }
+
+Then, at the prompt:
+
+    % my wireguard up
+
+=head1 NOTES
+
+=head2 Null or unset B<ALT_PATH>
+
+    % unset ALT_PATH
+    % alt man
+    ???
+
+    % ALT_PATH= alt man
+    ???
+
+While B<alt> is fine with an empty or unset B<ALT_PATH>, the
+behavior in such cases depends on the running shell.  Typically, only
+shell built-ins will be found. Some shells will also search for aliases
+and functions. But an error or the use of a default search path are also
+possible.
+
+=head1 AUTHOR
+
+Giuseppe Calabrese (contact@giucal.it)
