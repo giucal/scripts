@@ -83,3 +83,7 @@ descriptor 1, so B<buffer> has no way to catch it, either:
   buffer cp source /dev/stdout > destination
 
 (Redirection in the shell happens between file descriptors.)
+
+=head1 AUTHOR
+
+Giuseppe Calabrese (contact@giucal.it)

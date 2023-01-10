@@ -43,4 +43,4 @@ L<sleep(1)>
 
 =head1 AUTHOR
 
-Giuseppe Calabrese
+Giuseppe Calabrese (contact@giucal.it)

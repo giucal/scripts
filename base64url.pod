@@ -31,4 +31,4 @@ and C<-> (hyphen) in place of C<+>.
 
 =head1 AUTHOR
 
-Giuseppe Calabrese
+Giuseppe Calabrese (contact@giucal.it)
