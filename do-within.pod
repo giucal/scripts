@@ -1,0 +1,46 @@
+=head1 NAME
+
+B<do-within> - run a command with a timeout
+
+=head1 SYNOPSIS
+
+B<do-within> [B<-h>] [B<-->] I<timeout> I<command> [I<argument> ...]
+
+=head1 DESCRIPTION
+
+Runs I<command> with the given I<timeout>.  The I<timeout> argument follows
+the same format as the I<time> argument of L<sleep(1)>.
+
+=head1 OPTIONS
+
+=over
+
+=item B<-h>
+
+Print a help message to standard error.
+
+=back
+
+=head1 EXIT CODE
+
+=over
+
+=item Z<>2
+
+on misuse or help request (B<-h>)
+
+=item >=0 (including 2)
+
+if I<command> exited with such status
+
+=back
+
+=head1 EXAMPLES
+
+=head1 SEE ALSO
+
+L<sleep(1)>
+
+=head1 AUTHOR
+
+Giuseppe Calabrese

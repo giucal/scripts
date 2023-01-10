@@ -1,0 +1,59 @@
+=head1 NAME
+
+B<by-size> - B<du>|B<sort> the given files
+
+=head1 SYNOPSIS
+
+B<by-size> [B<-h>] [B<-->] [I<file> ...]
+
+=head1 DESCRIPTION
+
+Filters the given files and directories, up to the first level, from the
+biggest to the smallest. If no argument is given, runs on the current
+directory.
+
+=head1 OPTIONS
+
+=over
+
+=item B<-h>
+
+Print a help message to standard error.
+
+=back
+
+=head1 EXIT CODE
+
+=over
+
+=item Z<>0
+
+on success
+
+=item Z<>2
+
+on misuse or help request (B<-h>)
+
+=item >0
+
+on error
+
+=back
+
+=head1 EXAMPLES
+
+List the content of the current directory by decreasing size:
+
+    by-size
+
+Find out what is taking up the most space in the Downloads directory:
+
+    by-size /home/user/Downloads
+
+=head1 SEE ALSO
+
+L<du(1)>, L<(sort(1)>
+
+=head1 AUTHOR
+
+Giuseppe Calabrese

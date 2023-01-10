@@ -1,0 +1,34 @@
+=head1 NAME
+
+B<base64-to-base64url>, B<base64url-to-base64>
+-- convert between Base64 and URL-encoded Base64
+
+=head1 SYNOPSIS
+
+B<base64-to-base64url> [B<-h>] [B<-->] [I<string>]
+
+B<base64url-to-base64> [B<-h>] [B<-->] [I<string>]
+
+=head1 DESCRIPTION
+
+B<base64-to-base64url> takes (optionally wrapped) Base64 as input and writes
+URL-safe Base64 to standard output.  Vice versa, B<base64url-to-base64> takes
+URL-safe Base64 as input and writes unwrapped Base64 to standard output.
+
+The input is either standard input or, if given, I<string>.
+
+=head1 DETAILS
+
+URL-safe Base64 is plain Base64 with C<_> (underscore) in place of C</>
+and C<-> (hyphen) in place of C<+>.
+
+  +--------------------------+
+  | Base64 | URL-safe Base64 |
+  +--------+-----------------+
+  | /      | _ (underscore)  |
+  | +      | - (hyphen)      |
+  +--------------------------+
+
+=head1 AUTHOR
+
+Giuseppe Calabrese

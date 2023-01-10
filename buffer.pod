@@ -1,0 +1,85 @@
+=head1 NAME
+
+B<buffer> -- retain a command's output until successful completion
+
+=head1 SYNOPSIS
+
+B<buffer> [B<-h>] [B<-->] I<command> [I<argument> ...]
+
+=head1 DESCRIPTION
+
+B<buffer> runs I<command> with the given arguments but retains its B<output>
+until it terminates successfully.  If I<command> exits with a nonzero status,
+B<buffer> will discard the output.
+
+The B<output> of I<command> is what is written to standard output, i.e. to
+file descriptor B<1>.  See L</PITFALLS>.
+
+=head1 EXIT STATUS
+
+=over
+
+=item Z<>0
+
+On success. Success means that I<command> succeeded I<and> the retained output
+has been fully propagated.
+
+=item Z<>2
+
+On misuse, when the help option (B<-h>) has been given, or when I<command>
+itself exited with such status.
+
+=item 1 or >2
+
+When I<command> exited with such status.
+
+=back
+
+=head1 EXAMPLES
+
+=head2 Run commands that can fail partway
+
+Receive a file from the network using L<nc(1)>/L<netcat(1)>:
+
+  buffer nc -l 1234 > received.txt
+
+Decrypt a file with L<scrypt(1)|https://www.tarsnap.com/scrypt.html>:
+
+  buffer scrypt dec ciphertext > plaintext
+
+Note that the C<< > plaitext >> redirection pertains to B<buffer>, so the
+output of B<scrypt> is written to I<plaintext> only if B<scrypt> succeeds.
+
+B<buffer> can also be used in a pipeline, e.g. paired with L<cat(1)>:
+
+  ... | buffer cat | ...
+
+=head1 PITFALLS
+
+=head2 Empty output vs. missing output
+
+B<buffer> cannot prevent the shell from creating the files subject to
+redirection.  Take the L<scrypt(1)> example:
+
+  buffer scrypt dec ciphertext > plaintext
+
+In the event of a failed decryption, I<plaintext> will be empty.  Unluckily,
+a legal plaintext can be empty, too.  You can't tell one event from another
+without looking at the exit status.
+
+=head2 Bypassed standard output
+
+The "output" of I<command> must be directed to its I<standard output>,
+otherwise B<buffer> cannot retain it.  Consider these examples.
+
+This L<cp(1)> invocation doesn't use standard output, but writes directly
+to I<destination>:
+
+  buffer cp source destination
+
+This invocation does use the standard output file, but not through file
+descriptor 1, so B<buffer> has no way to catch it, either:
+
+  buffer cp source /dev/stdout > destination
+
+(Redirection in the shell happens between file descriptors.)

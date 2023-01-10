@@ -1,0 +1,70 @@
+=head1 NAME
+
+B<to-hex> - convert binary to haxadecimal
+
+=head1 SYNOPSIS
+
+B<to-hex> [B<-h>] [B<-->] [I<string>]
+
+=head1 DESCRIPTION
+
+Converts either standard input or, if given, I<string> to hexadecimal.
+
+=head1 OPTIONS
+
+=over
+
+=item B<-h>
+
+Print a help message to standard error.
+
+=back
+
+=head1 EXIT CODE
+
+=over
+
+=item Z<>0
+
+on success
+
+=item Z<>2
+
+on misuse or help request (B<-h>)
+
+=item >0
+
+on error
+
+=back
+
+=head1 EXAMPLES
+
+Encode a string:
+
+    to-hex 'Hello, world!'
+
+Encode the content of variable C<$x>:
+
+    to-hex -- "$x"
+
+Encode the output of a command:
+
+    echo 'Hello, world!' | to-hex
+
+=head1 DISCUSSION
+
+As far as I can tell, none of the POSIX commands can turn a stream of
+bytes into an hexadecimal string without intermixed spaces, counters
+and other litter. The simplest solution I could come up with is combining
+L<od(1)> and L<tr(1)>:
+
+    od -An -vtxC | tr -d ' \n'
+
+=head1 SEE ALSO
+
+L<od(1)>, L<hexdump(1)>
+
+=head1 AUTHOR
+
+Giuseppe Calabrese
