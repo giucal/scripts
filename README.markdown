@@ -9,7 +9,7 @@ Installation
 
     make install
 
-The default installation prefix is `~/.local`. So, exdcutables go into
+The default installation prefix is `~/.local`. So, executables go into
 `~/.local/bin` and man pages into `~/.local/share/man/man1`. Change the
 prefix by setting `PREFIX`, e.g.:
 
