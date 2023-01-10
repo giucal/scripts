@@ -12,7 +12,7 @@ usage() {
 	exit 2
 }
 
-getopts 'h' opt && usage "$opt"
+getopts 'h' opt && usage "-$opt"
 [ "$1" = '--' ] && shift
 [ "$#" -lt 2 ] && usage
 
